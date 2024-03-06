@@ -4,42 +4,34 @@ import com.example.demo234.model.EventEntity;
 import com.example.demo234.repository.UserRepository;
 import jdk.jfr.Timestamp;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.ZoneOffset;
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.*;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.List;
 
-import static java.util.concurrent.CompletableFuture.runAsync;
-
-@Component
 @Service
 @Slf4j
 public class UserService {
 
-    @Autowired
-    @Lazy
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    @Timestamp
+
     public EventEntity getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
 
-    public EventEntity findBytTimeStamp(Long timeStamp){
-        return userRepository.findByDateCreated(LocalDateTime.ofEpochSecond(timeStamp,0, ZoneOffset.UTC));
+    @Timestamp
+    public EventEntity findBytTimeStamp(Long timeStamp) {
+        return userRepository.findByDateCreated(LocalDateTime.ofEpochSecond(timeStamp, 0, ZoneOffset.UTC));
     }
 
-  public List<EventEntity> getAllUser() {return userRepository.findAll();}
+    public List<EventEntity> getAllUser() {
+        return userRepository.findAll();
+    }
 
     public void saveUser(EventEntity user) {
 
@@ -51,12 +43,7 @@ public class UserService {
     }
 
 
-
-
-
 }
-
-
 
 
 //

@@ -10,11 +10,11 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<EventEntity,Long> {
-    List<EventEntity> findByusername(String username) ;
+//    List<EventEntity> findByusername(String username) ;
 
-    Optional<Object> findAllById(Long id);
+//    Optional<Object> findAllById(Long id);
 
-    Optional<Object> findByuserId(Long userId);
+//    Optional<Object> findByuserId(Long userId);
 
     EventEntity findByDateCreated(LocalDateTime localDateTime);
 }
